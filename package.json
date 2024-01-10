@@ -1,33 +1,35 @@
 {
-  "name": "oli-server",
-  "version": "1.0.0",
-  "description": "Backend for the exam management solution",
-  "main": "index.js",
+  "name": "server-ts",
+
+  "version": "0.1.0",
+  "description": "Template for a simple express backend, using Typescript",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev"  : "nodemon src/index.ts",
+    "start": "node src/index.ts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/17lxve/oli-server.git"
+    "url": "git+https://github.com/17lxve/server-ts.git"
   },
   "keywords": [
-    "capstone",
+    "server",
     "node",
     "express",
-    "postgresql"
+    "mongodb"
   ],
   "author": "Timmy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/17lxve/oli-server/issues"
+    "url": "https://github.com/17lxve/server-ts/issues"
   },
-  "homepage": "https://github.com/17lxve/oli-server#readme",
+  "homepage": "https://github.com/17lxve/server-ts#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-list-endpoints": "^6.0.0",
-    "helmet": "^7.1.0"
+    "helmet": "^7.1.0",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
