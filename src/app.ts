@@ -1,29 +1,33 @@
 // Imports
-import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import router from './router';
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import router from "./router";
+import morgan from "morgan";
+import { middlewareExample } from "./middleware";
+import { db } from "./db";
 
-function init(){
-    // Create Express Server
-    const app = express()
+function init() {
+  // Create Express Server
+  const app = express();
 
-    // Allow Cross-Origin requests
-    app.use(cors({ origin : true }));
+  // Add dependencies to the app
+  // Including custom middleware
+  const dependencies = [
+    cors({ origin: true }),
+    helmet(),
+    morgan("dev"),
+    express.json(),
+    express.text({ type: "text/html" }),
+    middlewareExample,
+    router,
+  ];
+  for (const dependency of dependencies) app.use(dependency);
 
-    // Security
-    app.use(helmet());
-
-    // Allow JSON & Text in POST and PUT requests
-    app.use(express.json());
-    app.use(express.text({ type : 'text/html' }));
-    
-    // Add all the defined routes to the server
-    app.use(router)
-
-    // Send the server with all parameters defined
-    return app
+  // Return the server with all parameters defined
+  db.init()
+  return app;
 }
 
 // Exports
-export default init()
+export default init();
