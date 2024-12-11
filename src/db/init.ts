@@ -20,7 +20,7 @@ const connector = {
   },
   get: () => db,
   collection: (collection_name: string) =>
-    mongoose.connection.db?.collection(collection_name),
+    mongoose.connection.db!.collection(collection_name),
 };
 
 export default connector;
